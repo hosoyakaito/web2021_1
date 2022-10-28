@@ -4,7 +4,7 @@ const db = new sqlite3.Database('test2.db');
 let schema = `
 create table Main(
   id integer primary key,
-  WeaponName text,
+  MainWeaponName text,
   sub_id,
   special_id
 );
