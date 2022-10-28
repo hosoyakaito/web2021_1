@@ -5,7 +5,7 @@ let schema = `
 create table Sub(
   sub_id integer primary key,
   SubWeaponName text,
-  inkConsumption text
+  inkConsumption integer
 );
 `
 

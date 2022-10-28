@@ -5,8 +5,8 @@ let schema = `
 create table Main(
   id integer primary key,
   MainWeaponName text,
-  sub_id,
-  special_id
+  sub_id integer,
+  special_id integer
 );
 `
 
