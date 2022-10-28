@@ -2,11 +2,10 @@ const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('test2.db');
 
 let schema = `
-create table Main(
-  id integer primary key,
-  WeaponName text,
-  sub_id,
-  special_id
+create table Special(
+  special_id integer primary key,
+  SpecialWeaponName text,
+  Point integer
 );
 `
 
