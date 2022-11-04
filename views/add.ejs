@@ -13,11 +13,20 @@
     スペシャルウェポンのIDを入力してください。<br>
     <input type="number" name="specialID"><br>
     <input type="submit" value="登録"><br>
-  </form>
+  </form><br><br>
+
   
-  <form action="/sub" method="post">
-    サブウェポンのID対応表はこちら<br>
-    <input type="submit" value="こちら">
-  </form>
+  サブウェポンのID対応表<br>
+  
+  <table>
+      <% for( let row of data) { %>
+        <tr>
+          表示順：「ID」「名前」「インク消費量」<br><br>
+          <td><%= row.sub_id %>　</td>
+          <td><%= row.SubWeaponName %>　</td>
+          <td><%= row.inkConsumption %>%</td>
+        </tr>
+      <% } %>
+  </table>
 </body>
 </html>

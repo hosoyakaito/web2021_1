@@ -31,13 +31,13 @@ app.get("/top", (req, res) => {
     })
 })
 
-app.get("/sub", (req, res) => {
+app.get("/add", (req, res) => {
     db.serialize( () => {
         db.all("select * from Sub;", (error, data) => {
             if( error ) {
                 res.render('show', {mes:"エラーです"});
             }
-            res.render('subweapon', {data:data});
+            res.render('add', {data:data});
         })
     })
 })
