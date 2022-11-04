@@ -1,0 +1,22 @@
+<!Doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Show message</title>
+</head>
+<body>
+  <h2>武器情報</h2>
+  <table>
+      <% for( let row of data) { %>
+        <tr>
+          <td><%= row.id %></td>
+          <td><%= row.MainWeaponName %></td>
+          <td><%= row.SubWeaponName %></td>
+          <td><%= row.inkConsumption %>％</td>
+          <td><%= row.SpecialWeaponName %></td>
+          <td><%= row.Point %>P</td>
+        </tr>
+      <% } %>
+  </table>
+</body>
+</html>
