@@ -15,19 +15,7 @@ app.get("/", (req, res) => {
   res.render('show', {mes:message});
 });
 
-app.get("/sub", (req, res) => {
-    console.log(000000001010100);
-    db.serialize( () => {
-        db.all("select MainWeaponName, Sub.SubWeaponName, sub.inkConsumption, Special.SpecialWeaponName, Special.Point from Main join Sub on Main.sub_id = Sub.sub_id join Special on Main.special_id = Special.special_id;"", (error, data) => {
-            if( error ) {
-                res.render('show', {mes:"エラーです"});
-            }
-            res.render('All', {data:data});
-        })
-    })
-})
 app.get("/top", (req, res) => {
-    console.log(1111111101010100);    // ①
     let desc = "";
     if( req.query.desc ) desc = " desc";
     let sql = "select id, MainWeaponName, Sub.SubWeaponName, sub.inkConsumption, Special.SpecialWeaponName, Special.Point from Main join Sub on Main.sub_id = Sub.sub_id join Special on Main.special_id = Special.special_id;";
@@ -42,6 +30,18 @@ app.get("/top", (req, res) => {
         })
     })
 })
+
+app.get("/sub", (req, res) => {
+    db.serialize( () => {
+        db.all("select * from Sub;", (error, data) => {
+            if( error ) {
+                res.render('show', {mes:"エラーです"});
+            }
+            res.render('subweapon', {data:data});
+        })
+    })
+})
+
 app.use(function(req, res, next) {
   res.status(404).send('ページが見つかりません');
 });
