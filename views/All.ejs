@@ -9,11 +9,13 @@
   <table>
       <% for( let row of data) { %>
         <tr>
-          <td><%= row.id %></td>
-          <td><%= row.MainWeaponName %></td>
-          <td><%= row.SubWeaponName %></td>
-          <td><%= row.inkConsumption %>％</td>
-          <td><%= row.SpecialWeaponName %></td>
+          表示順<br>
+          「ID」「メイン」「サブ」「インク消費量」「スペシャル」「必要ポイント」<br><br>
+          <td>&emsp;<%= row.id %>&emsp;</td>
+          <td><%= row.MainWeaponName %>&emsp;</td>
+          <td><%= row.SubWeaponName %>&emsp;</td>
+          <td><%= row.inkConsumption %>％&emsp;</td>
+          <td><%= row.SpecialWeaponName %>&emsp;</td>
           <td><%= row.Point %>P</td>
         </tr>
       <% } %>

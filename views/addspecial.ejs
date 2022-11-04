@@ -1,0 +1,32 @@
+<!Doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>メイン武器追加ページ</title>
+</head>
+<body>
+  <form action="/top" method="post">
+    メインウェポンの名前を入力してください。<br>
+    <input type="text" name="bukiname"><br>
+    サブウェポンのIDを入力してください。<br>
+    <input type="number" name="subID"><br>
+    スペシャルウェポンのIDを入力してください。<br>
+    <input type="number" name="specialID"><br>
+    <input type="submit" value="登録"><br>
+  </form><br><br>
+
+  
+  サブウェポンのID対応表<br>
+  
+  <table>
+      <% for( let row of data) { %>
+        <tr>
+          表示順：「ID」「名前」「インク消費量」<br><br>
+          <td><%= row.sub_id %>　</td>
+          <td><%= row.SubWeaponName %>　</td>
+          <td><%= row.inkConsumption %>%</td>
+        </tr>
+      <% } %>
+  </table>
+</body>
+</html>
