@@ -6,7 +6,8 @@ create table Main(
   id integer primary key,
   MainWeaponName text,
   sub_id integer,
-  special_id integer
+  special_id integer,
+  Point integer
 );
 `
 

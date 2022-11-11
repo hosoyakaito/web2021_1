@@ -15,10 +15,8 @@ app.get("/", (req, res) => {
   res.render('show', {mes:message});
 });
 
-app.get("/top", (req, res) => {
-    let desc = "";
-    if( req.query.desc ) desc = " desc";
-    let sql = "select id, MainWeaponName, Sub.SubWeaponName, sub.inkConsumption, Special.SpecialWeaponName, Special.Point from Main join Sub on Main.sub_id = Sub.sub_id join Special on Main.special_id = Special.special_id;";
+app.get("/all", (req, res) => {
+    let sql = "select id, MainWeaponName, Sub.SubWeaponName, sub.inkConsumption, Special.SpecialWeaponName,Point from Main INNER join Sub on Main.sub_id = Sub.sub_id INNER join Special on Main.special_id = Special.special_id;";
     //console.log(sql);    // ②
     db.serialize( () => {
         db.all(sql, (error, data) => {
@@ -31,13 +29,102 @@ app.get("/top", (req, res) => {
     })
 })
 
-app.get("/add", (req, res) => {
+app.get("/sub2", (req, res) => {
+    let sql = "select * from Sub;";
+    //console.log(sql);    // ②
+    db.serialize( () => {
+        db.all(sql, (error, data) => {
+            if( error ) {
+                res.render('show', {mes:"エラーです"});
+            }
+            //console.log(data);    // ③
+            res.render('sub', {data:data});
+        })
+    })
+})
+
+app.get("/special2", (req, res) => {
+    let sql = "select * from Special;";
+    //console.log(sql);    // ②
+    db.serialize( () => {
+        db.all(sql, (error, data) => {
+            if( error ) {
+                res.render('show', {mes:"エラーです"});
+            }
+            //console.log(data);    // ③
+            res.render('special', {data:data});
+        })
+    })
+})
+
+app.get("/addmain", (req, res) => {
+  let sql ='insert into Main ("MainWeaponName","sub_id","special_id","point") values ("'+req.query.bukiname+'","'+req.query.subID+'","'+req.query.specialID+'","'+req.query.point+'");';
+  console.log(sql);
+   db.serialize( () => {
+        db.run(sql, (error, data) => {
+            if( error ) {
+                res.render('show', {mes:"エラーです"});
+            }
+            res.redirect('/all');
+        })
+    })
+})
+
+app.get("/addsub", (req, res) => {
+  let sql ='insert into Sub ("SubWeaponName","inkConsumption") values ("'+req.query.subname+'","'+req.query.inkConsumption+'");';
+  console.log(sql);
+   db.serialize( () => {
+        db.run(sql, (error, data) => {
+            if( error ) {
+                res.render('show', {mes:"エラーです"});
+            }
+            res.redirect('/sub2');
+        })
+    })
+})
+
+app.get("/addspecial", (req, res) => {
+  let sql ='insert into Special ("SpecialWeaponName") values ("'+req.query.specialname+'");';
+  console.log(sql);
+   db.serialize( () => {
+        db.run(sql, (error, data) => {
+            if( error ) {
+                res.render('show', {mes:"エラーです"});
+            }
+            res.redirect('/special2');
+        })
+    })
+})
+
+app.get("/main", (req, res) => {
     db.serialize( () => {
         db.all("select * from Sub;", (error, data) => {
             if( error ) {
                 res.render('show', {mes:"エラーです"});
             }
-            res.render('add', {data:data});
+          res.render('addmain2', {data:data});
+        })
+    })
+})
+
+app.get("/sub", (req, res) => {
+    db.serialize( () => {
+        db.all("select * from Sub;", (error, data) => {
+            if( error ) {
+                res.render('show', {mes:"エラーです"});
+            }
+          res.render('addsub2', {data:data});
+        })
+    })
+})
+
+app.get("/special", (req, res) => {
+    db.serialize( () => {
+        db.all("select * from Special;", (error, data) => {
+            if( error ) {
+                res.render('show', {mes:"エラーです"});
+            }
+          res.render('addspecial2', {data:data});
         })
     })
 })

@@ -1,0 +1,26 @@
+<!Doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>スペシャル武器追加ページ</title>
+</head>
+<body>
+  <form action="/addspecial">
+    スペシャルウェポンの名前を入力してください。<br>
+    <input type="text" name="specialname" id="specialname"><br>
+    
+    <input type="submit" value="登録"><br>
+  </form><br><br>
+  スペシャルウェポンの表<br>
+  表示順：「ID」「名前」<br><br>
+  
+  <table>
+      <% for( let row of data) { %>
+        <tr>
+          <td><%= row.special_id %>　</td>
+          <td><%= row.SpecialWeaponName %>　</td>
+        </tr>
+      <% } %>
+  </table>
+</body>
+</html>

@@ -6,11 +6,11 @@
 </head>
 <body>
   <h2>武器情報</h2>
+  表示順<br>
+          「ID」「メイン」「サブ」「インク消費量」「スペシャル」「必要ポイント」<br><br>
   <table>
       <% for( let row of data) { %>
         <tr>
-          表示順<br>
-          「ID」「メイン」「サブ」「インク消費量」「スペシャル」「必要ポイント」<br><br>
           <td>&emsp;<%= row.id %>&emsp;</td>
           <td><%= row.MainWeaponName %>&emsp;</td>
           <td><%= row.SubWeaponName %>&emsp;</td>

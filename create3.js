@@ -4,8 +4,7 @@ const db = new sqlite3.Database('test2.db');
 let schema = `
 create table Special(
   special_id integer primary key,
-  SpecialWeaponName text,
-  Point integer
+  SpecialWeaponName text
 );
 `
 

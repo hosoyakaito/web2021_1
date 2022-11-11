@@ -5,28 +5,35 @@
   <title>メイン武器追加ページ</title>
 </head>
 <body>
-  <form action="/top" method="post">
+  <form action="/addmain">
     メインウェポンの名前を入力してください。<br>
-    <input type="text" name="bukiname"><br>
+    <input type="text" name="bukiname" id="bukiname"><br>
+    
     サブウェポンのIDを入力してください。<br>
-    <input type="number" name="subID"><br>
+    <input type="number" name="subID" id="subID"><br>
+    
     スペシャルウェポンのIDを入力してください。<br>
-    <input type="number" name="specialID"><br>
+    <input type="number" name="specialID" id="specialID"><br>
+    
+    必要ポイントを入力してください。<br>
+    <input type="number" name="point" id="point">P<br>
+    
     <input type="submit" value="登録"><br>
   </form><br><br>
 
   
   サブウェポンのID対応表<br>
+  表示順：「ID」「名前」「インク消費量」<br><br>
   
   <table>
       <% for( let row of data) { %>
         <tr>
-          表示順：「ID」「名前」「インク消費量」<br><br>
           <td><%= row.sub_id %>　</td>
           <td><%= row.SubWeaponName %>　</td>
           <td><%= row.inkConsumption %>%</td>
         </tr>
       <% } %>
   </table>
+
 </body>
 </html>
