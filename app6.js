@@ -171,9 +171,44 @@ app.get("/kensaku", (req, res) => {
   let twentyone = "";
   let twentytwo = "";
   
+  if(req.query.kuikku)kuikku = "クイックボム";
+  if(req.query.supurassyu)supurassyu = "スプラッシュボム";
+  if(req.query.kyubann)kyubann = "キューバンボム";
+  if(req.query.tannsann)tannsann = "タンサンボム";
+  if(req.query.topido)topido = "トーピード";
+  if(req.query.torappu)torappu = "トラップ";
+  if(req.query.bikonn)bikonn = "ジャンプビーコン";
+  if(req.query.robotto)robotto = "ロボットボム";
+  if(req.query.sirudo)sirudo = "スプラッシュシールド";
+  if(req.query.karingu)karingu = "カーリングボム";
+  if(req.query.poizun)poizun = "ポイズンミスト";
+  if(req.query.sensa)sensa = "ポイントセンサー";
+  if(req.query.supurinkura)supurinkura = "スプリンクラー";
+  if(req.query.maka)maka = "ラインマーカー";
+
+  if(req.query.syotto)syotto = "ウルトラショット";
+  if(req.query.enazi)enazi = "エナジースタンド";
+  if(req.query.kani)kani = "カニタンク";
+  if(req.query.kyiinki)kyiinki = "キューインキ";
+  if(req.query.baria)baria = "グレートバリア";
+  if(req.query.same)same = "サメライド";
+  if(req.query.syoku)syoku = "ショクワンダー";
+  if(req.query.torunedo)torunedo = "トリプルトルネード";
+  if(req.query.sona)sona = "ホップソナー";
+  if(req.query.ame)ame = "アメフラシ";
+  if(req.query.reza)reza = "メガホンレーザー";
+  if(req.query.hanko)hanko = "ウルトラハンコ";
+  if(req.query.zyetto)zyetto = "ジェットパック";
+  if(req.query.naisu)naisu = "ナイスダマ";
+  if(req.query.misairu)misairu = "マルチミサイル";
   
-
-
+  if(req.query.sixteen)sixteen = "160";
+  if(req.query.seventeen)seventeen = "170";
+  if(req.query.eighteen)eighteen = "180";
+  if(req.query.nineteen)nineteen = "190";
+  if(req.query.twenty)twenty = "200";
+  if(req.query.twentyone)twentyone = "210";
+  if(req.query.twentytwo)twentytwo = "220";
   
   let sql ="select id, MainWeaponName, Sub.SubWeaponName, sub.inkConsumption, Special.SpecialWeaponName,Point from Main INNER join Sub on Main.sub_id = Sub.sub_id INNER join Special on Main.special_id = Special.special_id WHERE MainWeaponName = "++" or SubWeaponName = "++" or SpecialWeaponName = "++" or Point = "++";
   console.log(sql);
