@@ -129,6 +129,30 @@ app.get("/special", (req, res) => {
     })
 })
 
+
+
+app.get("/kensaku", (req, res) => {
+  let sql ="select id, MainWeaponName, Sub.SubWeaponName, sub.inkConsumption, Special.SpecialWeaponName,Point from Main INNER join Sub on Main.sub_id = Sub.sub_id INNER join Special on Main.special_id = Special.special_id WHERE "++" ";
+  console.log(sql);
+   db.serialize( () => {
+        db.run(sql, (error, data) => {
+            if( error ) {
+                res.render('show', {mes:"エラーです"});
+            }
+            res.redirect('/All');
+        })
+    })
+})
+
+
+
+
+
+
+
+
+
+
 app.use(function(req, res, next) {
   res.status(404).send('ページが見つかりません');
 });

@@ -5,17 +5,80 @@
   <title>Show message</title>
 </head>
 <body>
-  <h2>武器情報</h2>
+  <h1>武器情報</h1>
+  <h2>絞り込み検索</h2>
+  <form action="/kensaku">
+    メインウェポンの名前を入力してください。<br>
+    <input type="text" name="bukiname" id="bukiname"><br>
+    
+    <br>サブウェポンを選択してください。<br>
+    <input type="checkbox" name="kuikku" id="kuikku">クイックボム&emsp;
+    <input type="checkbox" name="supurassyu" id="supurassyu">スプラッシュボム&emsp;
+    <input type="checkbox" name="kyu-bann" id="kyu-bann">キューバンボム&emsp;
+    <input type="checkbox" name="tannsann" id="tannsann">タンサンボム<br>
+    <input type="checkbox" name="to-pi-do" id="to-pi-do">トーピード&emsp;
+    <input type="checkbox" name="torappu" id="torappu">トラップ&emsp;
+    <input type="checkbox" name="bi-konn" id="bi-konn">ジャンプビーコン&emsp;
+    <input type="checkbox" name="robotto" id="robotto">ロボットボム&emsp;
+    <input type="checkbox" name="si-rudo" id="si-rudo">スプラッシュシールド<br>
+    <input type="checkbox" name="ka-ringu" id="ka-ringu">カーリングボム&emsp;
+    <input type="checkbox" name="poizun" id="ppoizun">ポイズンミスト&emsp;
+    <input type="checkbox" name="sensa-" id="sensa-">ポイントセンサー&emsp;
+    <input type="checkbox" name="supurinkura" id="supurinkura">スプリンクラー&emsp;
+    <input type="checkbox" name="ma-ka-" id="ma-ka-">ラインマーカー
+
+    
+    <br><br>スペシャルウェポンを選択してください。<br>
+    <input type="checkbox" name="syotto" id="syotto">ウルトラショット&emsp;
+    <input type="checkbox" name="enazi" id="enazi">エナジースタンド&emsp;
+    <input type="checkbox" name="kani" id="kani">カニタンク&emsp;
+    <input type="checkbox" name="kyi-inki" id="kyu-inki">キューインキ&emsp;
+    <input type="checkbox" name="baria" id="baria">グレートバリア<br>
+    <input type="checkbox" name="same" id="same">サメライド&emsp;
+    <input type="checkbox" name="syoku" id="syoku">ショクワンダー&emsp;
+    <input type="checkbox" name="torune-do" id="torune-do">トリプルトルネード&emsp;
+    <input type="checkbox" name="sona-" id="sona-">ホップソナー&emsp;
+    <input type="checkbox" name="ame" id="ame">アメフラシ<br>
+    <input type="checkbox" name="re-za-" id="re-za-">メガホンレーザー&emsp;
+    <input type="checkbox" name="hanko" id="hanko">ウルトラハンコ&emsp;
+    <input type="checkbox" name="zyetto" id="zyetto">ジェットパック&emsp;
+    <input type="checkbox" name="naisu" id="naisu">ナイスダマ&emsp;
+    <input type="checkbox" name="misairu" id="misairu">マルチミサイル
+    
+    <br><br>必要ポイントを選択してください。<br>
+    <input type="checkbox" name="160" id="160">160P&emsp;
+    <input type="checkbox" name="170" id="170">170P&emsp;
+    <input type="checkbox" name="180" id="180">180P&emsp;
+    <input type="checkbox" name="190" id="190">190P&emsp;
+    <input type="checkbox" name="200" id="200">200P&emsp;
+    <input type="checkbox" name="210" id="210">210P&emsp;
+    <input type="checkbox" name="220" id="220">220P&emsp;
+
+    <h2>便利検索機能</h2>
+    <h4>スプラトゥーン1、スプラトゥーン2の時からあるサブウェポン、スペシャルウェポンを絞り込める機能です。</h4>
+    ※スプラトゥーン1からスプラトゥーン2にかけてスペシャルウェポンは一新された為、<br>
+    スプラトゥーン1のスペシャルウェポンが元となった新しいスペシャルウェポンを検索している。（例：バリア→グレートバリア）<br><br>
+    <input type="checkbox" name="splatoon1sub" id="splatoon1sub">スプラトゥーン1のサブウェポン&emsp;
+    <input type="checkbox" name="splatoon2sub" id="splatoon2sub">スプラトゥーン2のサブウェポン&emsp;
+    <input type="checkbox" name="splatoon3sub" id="splatoon3sub">スプラトゥーン3のサブウェポン<br>
+    <input type="checkbox" name="splatoon1special" id="splatoon1special">スプラトゥーン1のスペシャルウェポン&emsp;
+    <input type="checkbox" name="splatoon2special" id="splatoon2special">スプラトゥーン2のスペシャルウェポン&emsp;
+    <input type="checkbox" name="splatoon3special" id="splatoon3special">スプラトゥーン3のスペシャルウェポン
+    
+    <br><br><br><input type="submit" value="検索する"><br>
+  </form>
+  
+  <h2>武器情報一覧</h2>
   表示順<br>
-          「ID」「メイン」「サブ」「インク消費量」「スペシャル」「必要ポイント」<br><br>
+          「ID」「メイン」　　　　「サブ」　　　「インク消費量」「スペシャル」「必要ポイント」<br><br>
   <table>
       <% for( let row of data) { %>
         <tr>
           <td>&emsp;<%= row.id %>&emsp;</td>
           <td><%= row.MainWeaponName %>&emsp;</td>
-          <td><%= row.SubWeaponName %>&emsp;</td>
-          <td><%= row.inkConsumption %>％&emsp;</td>
-          <td><%= row.SpecialWeaponName %>&emsp;</td>
+          <td><%= row.SubWeaponName %>&emsp;&emsp;&emsp;&nbsp;</td>
+          <td><%= row.inkConsumption %>％&emsp;&emsp;&emsp;&ensp;</td>
+          <td><%= row.SpecialWeaponName %>&emsp;&emsp;&emsp;&ensp;</td>
           <td><%= row.Point %>P</td>
         </tr>
       <% } %>
