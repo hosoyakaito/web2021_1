@@ -132,7 +132,64 @@ app.get("/special", (req, res) => {
 
 
 app.get("/kensaku", (req, res) => {
-  let sql ="select id, MainWeaponName, Sub.SubWeaponName, sub.inkConsumption, Special.SpecialWeaponName,Point from Main INNER join Sub on Main.sub_id = Sub.sub_id INNER join Special on Main.special_id = Special.special_id WHERE "++" ";
+  let kuikku = "";
+  let supurassyu = "";
+  let kyubann = "";
+  let tannsann = "";
+  let topido = "";
+  let torappu = "";
+  let bikonn = "";
+  let robotto = "";
+  let sirudo = "";
+  let karingu = "";
+  let poizun = "";
+  let sensa = "";
+  let supurinkura = "";
+  let maka = "";
+  
+  let syotto = "";
+  let enazi = "";
+  let kani = "";
+  let kyiinki = "";
+  let baria = "";
+  let same = "";
+  let syoku = "";
+  let torunedo = "";
+  let sona = "";
+  let ame = "";
+  let reza = "";
+  let hanko = "";
+  let zyetto = "";
+  let naisu = "";
+  let misairu = "";
+  
+  let sixteen = "";
+  let seventeen = "";
+  let eighteen = "";
+  let nineteen = "";
+  let twenty = "";
+  let twentyone = "";
+  let twentytwo = "";
+  
+  
+
+
+  
+  let sql ="select id, MainWeaponName, Sub.SubWeaponName, sub.inkConsumption, Special.SpecialWeaponName,Point from Main INNER join Sub on Main.sub_id = Sub.sub_id INNER join Special on Main.special_id = Special.special_id WHERE MainWeaponName = "++" or SubWeaponName = "++" or SpecialWeaponName = "++" or Point = "++";
+  console.log(sql);
+   db.serialize( () => {
+        db.run(sql, (error, data) => {
+            if( error ) {
+                res.render('show', {mes:"エラーです"});
+            }
+            res.redirect('/All');
+        })
+    })
+})
+
+
+app.get("/benri", (req, res) => {
+  let sql ="select id, MainWeaponName, Sub.SubWeaponName, sub.inkConsumption, Special.SpecialWeaponName,Point from Main INNER join Sub on Main.sub_id = Sub.sub_id INNER join Special on Main.special_id = Special.special_id WHERE MainWeaponName = "++" or SubWeaponName = "++" or SpecialWeaponName = "++" or Point = "++";
   console.log(sql);
    db.serialize( () => {
         db.run(sql, (error, data) => {
