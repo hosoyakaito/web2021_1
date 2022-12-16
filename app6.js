@@ -132,110 +132,95 @@ app.get("/special", (req, res) => {
 
 
 app.get("/kensaku", (req, res) => {
-  
-  let kuikku = "";
-  let supurassyu = "";
-  let kyubann = "";
-  let tannsann = "";
-  let topido = "";
-  let torappu = "";
-  let bikonn = "";
-  let robotto = "";
-  let sirudo = "";
-  let karingu = "";
-  let poizun = "";
-  let sensa = "";
-  let supurinkura = "";
-  let maka = "";
-  
-  let syotto = "";
-  let enazi = "";
-  let kani = "";
-  let kyuinki = "";
-  let baria = "";
-  let same = "";
-  let syoku = "";
-  let torunedo = "";
-  let sona = "";
-  let ame = "";
-  let reza = "";
-  let hanko = "";
-  let zyetto = "";
-  let naisu = "";
-  let misairu = "";
-  
-  let sixteen = "";
-  let seventeen = "";
-  let eighteen = "";
-  let nineteen = "";
-  let twenty = "";
-  let twentyone = "";
-  let twentytwo = "";
 
-  if(req.query.kuikku)kuikku = "クイックボム";
-  if(req.query.supurassyu)supurassyu = "スプラッシュボム";
-  if(req.query.kyubann)kyubann = "キューバンボム";
-  if(req.query.tannsann)tannsann = "タンサンボム";
-  if(req.query.topido)topido = "トーピード";
-  if(req.query.torappu)torappu = "トラップ";
-  if(req.query.bikonn)bikonn = "ジャンプビーコン";
-  if(req.query.robotto)robotto = "ロボットボム";
-  if(req.query.sirudo)sirudo = "スプラッシュシールド";
-  if(req.query.karingu)karingu = "カーリングボム";
-  if(req.query.poizun)poizun = "ポイズンミスト";
-  if(req.query.sensa)sensa = "ポイントセンサー";
-  if(req.query.supurinkura)supurinkura = "スプリンクラー";
-  if(req.query.maka)maka = "ラインマーカー";
+  let sub = "";
+  let special = "";
+  let point = "";
 
-  if(req.query.syotto)syotto = "ウルトラショット";
-  if(req.query.enazi)enazi = "エナジースタンド";
-  if(req.query.kani)kani = "カニタンク";
-  if(req.query.kyuinki)kyuinki = "キューインキ";
-  if(req.query.baria)baria = "グレートバリア";
-  if(req.query.same)same = "サメライド";
-  if(req.query.syoku)syoku = "ショクワンダー";
-  if(req.query.torunedo)torunedo = "トリプルトルネード";
-  if(req.query.sona)sona = "ホップソナー";
-  if(req.query.ame)ame = "アメフラシ";
-  if(req.query.reza)reza = "メガホンレーザー";
-  if(req.query.hanko)hanko = "ウルトラハンコ";
-  if(req.query.zyetto)zyetto = "ジェットパック";
-  if(req.query.naisu)naisu = "ナイスダマ";
-  if(req.query.misairu)misairu = "マルチミサイル";
+
+  if(req.query.kuikku)sub += ",'クイックボム'";
+  if(req.query.supurassyu)sub += ",'スプラッシュボム'";
+  if(req.query.kyubann)sub += ",'キューバンボム'";
+  if(req.query.tannsann)sub += ",'タンサンボム'";
+  if(req.query.topido)sub += ",'トーピード'";
+  if(req.query.torappu)sub += ",'トラップ'";
+  if(req.query.bikonn)sub += ",'ジャンプビーコン'";
+  if(req.query.robotto)sub += ",'ロボットボム'";
+  if(req.query.sirudo)sub += ",'スプラッシュシールド'";
+  if(req.query.karingu)sub += ",'カーリングボム'";
+  if(req.query.poizun)sub += ",'ポイズンミスト'";
+  if(req.query.sensa)sub += ",'ポイントセンサー'";
+  if(req.query.supurinkura)sub += ",'スプリンクラー'";
+  if(req.query.maka)sub += ",'ラインマーカー'";
+
+  if(req.query.syotto)special += ",'ウルトラショット'";
+  if(req.query.enazi)special += ",'エナジースタンド'";
+  if(req.query.kani)special += ",'カニタンク'";
+  if(req.query.kyuinki)special += ",'キューインキ'";
+  if(req.query.baria)special += ",'グレートバリア'";
+  if(req.query.same)special += ",'サメライド'";
+  if(req.query.syoku)special += ",'ショクワンダー'";
+  if(req.query.torunedo)special += ",'トリプルトルネード'";
+  if(req.query.sona)special += ",'ホップソナー'";
+  if(req.query.ame)special += ",'アメフラシ'";
+  if(req.query.reza)special += ",'メガホンレーザー'";
+  if(req.query.hanko)special += ",'ウルトラハンコ'";
+  if(req.query.zyetto)special += ",'ジェットパック'";
+  if(req.query.naisu)special += ",'ナイスダマ'";
+  if(req.query.misairu)special += ",'マルチミサイル'";
   
-  if(req.query.sixteen)sixteen = "160";
-  if(req.query.seventeen)seventeen = "170";
-  if(req.query.eighteen)eighteen = "180";
-  if(req.query.nineteen)nineteen = "190";
-  if(req.query.twenty)twenty = "200";
-  if(req.query.twentyone)twentyone = "210";
-  if(req.query.twentytwo)twentytwo = "220";
+  if(req.query.sixteen)point += ",'160'";
+  if(req.query.seventeen)point += ",'170'";
+  if(req.query.eighteen)point += ",'180'";
+  if(req.query.nineteen)point += ",'190'";
+  if(req.query.twenty)point += ",'200'";
+  if(req.query.twentyone)point += ",'210'";
+  if(req.query.twentytwo)point += ",'220'";
   
-  let sql ="select id, MainWeaponName, Sub.SubWeaponName, sub.inkConsumption, Special.SpecialWeaponName,Point from Main INNER join Sub on Main.sub_id = Sub.sub_id INNER join Special on Main.special_id = Special.special_id WHERE MainWeaponName = "+req.query.bukiname+" or SubWeaponName in (`"+kuikku+"`,`"+supurassyu+"`,`"+kyubann+"`,`"+tannsann+"`,`"+topido+"`,`"+torappu+"`,`"+bikonn+"`,`"+robotto+"`,`"+sirudo+"`,`"+karingu+"`,`"+poizun+"`,`"+sensa+"`,`"+supurinkura+"`,`"+maka+"`) or SpecialWeaponName in (`"+syotto+"`,`"+enazi+"`,`"+kani+"`,`"+kyuinki+"`,`"+baria+"`,`"+same+"`,`"+syoku+"`,`"+torunedo+"`,`"+sona+"`,`"+ame+"`,`"+reza+"`,`"+hanko+"`,`"+zyetto+"`,`"+naisu+"`,`"+misairu+"`) or Point in (`"+sixteen+"`,`"+seventeen+"`,`"+eighteen+"`,`"+nineteen+"`,`"+twenty+"`,`"+twentyone+"`,`"+twentytwo+"`);
-  console.log(sql);
-   db.serialize( () => {
-        db.run(sql, (error, data) => {
+  let sql = "select id, MainWeaponName, Sub.SubWeaponName, sub.inkConsumption, Special.SpecialWeaponName,Point from Main INNER join Sub on Main.sub_id = Sub.sub_id INNER join Special on Main.special_id = Special.special_id WHERE MainWeaponName = '"+req.query.bukiname+"' or sub.SubWeaponName in (''"+sub+") or Special.SpecialWeaponName in (''"+special+") or Point in (''"+point+");";
+  console.log(sql); 
+    db.serialize( () => {
+        db.all(sql, (error, data) => {
             if( error ) {
                 res.render('show', {mes:"エラーです"});
             }
-            res.redirect('/All');
+            res.render('All', {data:data});
         })
     })
 })
 
 
 app.get("/benri", (req, res) => {
-  let sql ="select id, MainWeaponName, Sub.SubWeaponName, sub.inkConsumption, Special.SpecialWeaponName,Point from Main INNER join Sub on Main.sub_id = Sub.sub_id INNER join Special on Main.special_id = Special.special_id WHERE MainWeaponName = "++" or SubWeaponName = "++" or SpecialWeaponName = "++" or Point = "++";
+
+
+  let splatoon1sub = "";
+  let splatoon2sub = "";
+  let splatoon3sub = "";
+  let splatoon1special = "";
+  let splatoon2special = "";
+  let splatoon3special = "";
+
+  if(req.query.splatoon1sub)splatoon1sub = ",'カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク'";
+  if(req.query.splatoon2sub)splatoon2sub = ",'カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク'";
+  if(req.query.splatoon3sub)splatoon3sub = ",'ラインマーカー'";
+  if(req.query.splatoon1special)splatoon1special = ",'カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク'";
+  if(req.query.splatoon2special)splatoon2special = ",'カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク'";
+  if(req.query.splatoon3special)splatoon3special = ",'カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク'";
+
+
+  
+  let sql ="select id, MainWeaponName, Sub.SubWeaponName, sub.inkConsumption, Special.SpecialWeaponName,Point from Main INNER join Sub on Main.sub_id = Sub.sub_id INNER join Special on Main.special_id = Special.special_id WHERE sub.SubWeaponName in (''"+splatoon1sub+""+splatoon2sub+""+splatoon3sub+") or Special.SpecialWeaponName in (''"+splatoon1special+""+splatoon2special+""+splatoon3special+");";
   console.log(sql);
    db.serialize( () => {
-        db.run(sql, (error, data) => {
+        db.all(sql, (error, data) => {
             if( error ) {
                 res.render('show', {mes:"エラーです"});
             }
-            res.redirect('/All');
+            res.render('All', {data:data});
         })
     })
 })
+
 
 
 
