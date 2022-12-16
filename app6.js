@@ -58,6 +58,7 @@ app.get("/special2", (req, res) => {
 })
 
 app.get("/addmain", (req, res) => {
+
   let sql ='insert into Main ("MainWeaponName","sub_id","special_id","point") values ("'+req.query.bukiname+'","'+req.query.subID+'","'+req.query.specialID+'","'+req.query.point+'");';
   console.log(sql);
    db.serialize( () => {
