@@ -132,6 +132,7 @@ app.get("/special", (req, res) => {
 
 
 app.get("/kensaku", (req, res) => {
+  
   let kuikku = "";
   let supurassyu = "";
   let kyubann = "";
@@ -150,7 +151,7 @@ app.get("/kensaku", (req, res) => {
   let syotto = "";
   let enazi = "";
   let kani = "";
-  let kyiinki = "";
+  let kyuinki = "";
   let baria = "";
   let same = "";
   let syoku = "";
@@ -170,7 +171,7 @@ app.get("/kensaku", (req, res) => {
   let twenty = "";
   let twentyone = "";
   let twentytwo = "";
-  
+
   if(req.query.kuikku)kuikku = "クイックボム";
   if(req.query.supurassyu)supurassyu = "スプラッシュボム";
   if(req.query.kyubann)kyubann = "キューバンボム";
@@ -189,7 +190,7 @@ app.get("/kensaku", (req, res) => {
   if(req.query.syotto)syotto = "ウルトラショット";
   if(req.query.enazi)enazi = "エナジースタンド";
   if(req.query.kani)kani = "カニタンク";
-  if(req.query.kyiinki)kyiinki = "キューインキ";
+  if(req.query.kyuinki)kyuinki = "キューインキ";
   if(req.query.baria)baria = "グレートバリア";
   if(req.query.same)same = "サメライド";
   if(req.query.syoku)syoku = "ショクワンダー";
@@ -210,7 +211,7 @@ app.get("/kensaku", (req, res) => {
   if(req.query.twentyone)twentyone = "210";
   if(req.query.twentytwo)twentytwo = "220";
   
-  let sql ="select id, MainWeaponName, Sub.SubWeaponName, sub.inkConsumption, Special.SpecialWeaponName,Point from Main INNER join Sub on Main.sub_id = Sub.sub_id INNER join Special on Main.special_id = Special.special_id WHERE MainWeaponName = "++" or SubWeaponName = "++" or SpecialWeaponName = "++" or Point = "++";
+  let sql ="select id, MainWeaponName, Sub.SubWeaponName, sub.inkConsumption, Special.SpecialWeaponName,Point from Main INNER join Sub on Main.sub_id = Sub.sub_id INNER join Special on Main.special_id = Special.special_id WHERE MainWeaponName = "+req.query.bukiname+" or SubWeaponName in (`"+kuikku+"`,`"+supurassyu+"`,`"+kyubann+"`,`"+tannsann+"`,`"+topido+"`,`"+torappu+"`,`"+bikonn+"`,`"+robotto+"`,`"+sirudo+"`,`"+karingu+"`,`"+poizun+"`,`"+sensa+"`,`"+supurinkura+"`,`"+maka+"`) or SpecialWeaponName in (`"+syotto+"`,`"+enazi+"`,`"+kani+"`,`"+kyuinki+"`,`"+baria+"`,`"+same+"`,`"+syoku+"`,`"+torunedo+"`,`"+sona+"`,`"+ame+"`,`"+reza+"`,`"+hanko+"`,`"+zyetto+"`,`"+naisu+"`,`"+misairu+"`) or Point in (`"+sixteen+"`,`"+seventeen+"`,`"+eighteen+"`,`"+nineteen+"`,`"+twenty+"`,`"+twentyone+"`,`"+twentytwo+"`);
   console.log(sql);
    db.serialize( () => {
         db.run(sql, (error, data) => {
@@ -235,10 +236,6 @@ app.get("/benri", (req, res) => {
         })
     })
 })
-
-
-
-
 
 
 
