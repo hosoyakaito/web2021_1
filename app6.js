@@ -38,7 +38,7 @@ app.get("/sub2", (req, res) => {
                 res.render('show', {mes:"エラーです"});
             }
             //console.log(data);    // ③
-            res.render('sub', {data:data});
+            res.render('addsub', {data:data});
         })
     })
 })
@@ -52,7 +52,7 @@ app.get("/special2", (req, res) => {
                 res.render('show', {mes:"エラーです"});
             }
             //console.log(data);    // ③
-            res.render('special', {data:data});
+            res.render('addspecial', {data:data});
         })
     })
 })
@@ -99,11 +99,11 @@ app.get("/addspecial", (req, res) => {
 
 app.get("/main", (req, res) => {
     db.serialize( () => {
-        db.all("select * from Sub;", (error, data) => {
+        db.all("select * from Sub left outer join special on Sub.sub_id = special.special_id;", (error, data) => {
             if( error ) {
                 res.render('show', {mes:"エラーです"});
             }
-          res.render('addmain2', {data:data});
+          res.render('addmain', {data:data});
         })
     })
 })
@@ -114,7 +114,7 @@ app.get("/sub", (req, res) => {
             if( error ) {
                 res.render('show', {mes:"エラーです"});
             }
-          res.render('addsub2', {data:data});
+          res.render('addsub', {data:data});
         })
     })
 })
@@ -125,7 +125,7 @@ app.get("/special", (req, res) => {
             if( error ) {
                 res.render('show', {mes:"エラーです"});
             }
-          res.render('addspecial2', {data:data});
+          res.render('addspecial', {data:data});
         })
     })
 })
@@ -223,9 +223,53 @@ app.get("/benri", (req, res) => {
 })
 
 
+app.get("/deletespecial", (req, res) => {
+  let id = "0";
+  if(req.query.specialid)id = req.query.specialid;
+  let sql ="delete from Special where special_id = "+id+";";
+  console.log(sql);
+   db.serialize( () => {
+        db.run(sql, (error, data) => {
+          if(error) {
+            console.log('Error: ', error );
+            return;
+          }
+          res.redirect('/special2');
+        })
+    })
+})
 
+app.get("/deletesub", (req, res) => {
+  let id = "0";
+  if(req.query.subid)id = req.query.subid;
+  let sql ="delete from Sub where sub_id = "+id+";";
+  console.log(sql);
+   db.serialize( () => {
+        db.run(sql, (error, data) => {
+          if(error) {
+            console.log('Error: ', error );
+            return;
+          }
+          res.redirect('/sub2');
+        })
+    })
+})
 
-
+app.get("/deletemain", (req, res) => {
+  let id = "0";
+  if(req.query.mainid)id = req.query.mainid;
+  let sql ="delete from Main where id = "+id+";";
+  console.log(sql);
+   db.serialize( () => {
+        db.run(sql, (error, data) => {
+          if(error) {
+            console.log('Error: ', error );
+            return;
+          }
+          res.redirect('/all');
+        })
+    })
+})
 
 
 app.use(function(req, res, next) {

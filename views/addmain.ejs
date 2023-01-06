@@ -6,7 +6,7 @@
 </head>
 <body>
   <form action="/addmain">
-    メインウェポンの名前を入力してください。<br>
+    追加したいメインウェポンの名前を入力してください。<br>
     <input type="text" name="bukiname" id="bukiname"><br>
     
     サブウェポンのIDを入力してください。<br>
@@ -17,29 +17,22 @@
     
     必要ポイントを入力してください。<br>
     <input type="number" name="point" id="point">P<br>
-    
     <input type="submit" id="aaa" value="登録"><br>
-
-    <script>
-
-
-      
-      
-    </script>
-
     
   </form><br><br>
 
   
   サブウェポンのID対応表<br>
-  表示順：「ID」「名前」「インク消費量」<br><br>
+  表示順<br>「サブID」「名前」「インク消費量」&emsp;&emsp;/&emsp;&emsp;「スペシャルID」「名前」<br><br>
   
   <table>
       <% for( let row of data) { %>
         <tr>
-          <td><%= row.sub_id %>　</td>
-          <td><%= row.SubWeaponName %>　</td>
-          <td><%= row.inkConsumption %>%</td>
+          <td>&emsp;&emsp;<%= row.sub_id %>&emsp;</td>
+          <td><%= row.SubWeaponName %>&emsp;</td>
+          <td><%= row.inkConsumption %>%&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</td>
+          <td><%= row.special_id %>&emsp;</td>
+          <td><%= row.SpecialWeaponName %>　</td>
         </tr>
       <% } %>
   </table>

@@ -1,0 +1,51 @@
+<!Doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>スペシャル武器追加ページ</title>
+</head>
+<body>
+  <h2>追加欄</h2>
+  <form action="/addspecial">
+    追加したいスペシャルウェポンの『名前』を入力してください。<br>
+    <input type="text" name="specialname" id="specialname"><br>
+    <input type="submit" value="登録" id="Button" disabled><br>
+    <script>
+      const input = document.getElementById('specialname');
+      const input2 = document.getElementById('Button');
+      input.addEventListener('keyup', (e) => {
+      if (1 <= e.target.value.length) {
+        input2.disabled = false;
+      }
+    })
+    </script>
+  </form><br><br>
+
+  <h3>削除欄</h3>
+  <form action="/deletespecial">
+    削除したいスペシャルウェポンの『ID』を入力してください。<br>
+    <input type="number" name="specialid" id="specialid"><br>
+    <input type="submit" value="削除" id="Button2" disabled><br>
+  </form><br><br>
+  <script>
+    const text = document.getElementById('specialid');
+    const text2 = document.getElementById('Button2');
+    text.addEventListener('keyup', (a) => {
+      if (1 <= a.target.value.length) {
+        text2.disabled = false;
+      }
+    })
+  </script>
+  スペシャルウェポンの表<br>
+  表示順：「ID」「名前」<br><br>
+  
+  <table>
+      <% for( let row of data) { %>
+        <tr>
+          <td><%= row.special_id %>　</td>
+          <td><%= row.SpecialWeaponName %>　</td>
+        </tr>
+      <% } %>
+  </table>
+</body>
+</html>

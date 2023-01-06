@@ -2,11 +2,13 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Show message</title>
+  <title>スプラトゥーン武器一覧</title>
 </head>
 <body>
   <h1>武器情報</h1>
+  <h4>※一番下に武器情報の表があります</h4><br>
   <h2>絞り込み検索</h2>
+  <h4>※and検索ではなく、or検索です</h4>
   <form action="/kensaku">
     メインウェポンの名前を入力してください。<br>
     <input type="text" name="bukiname" id="bukiname"><br>
@@ -57,9 +59,9 @@
   </form>
 
     <h2>便利検索機能</h2>
-    <h4>スプラトゥーン1、スプラトゥーン2の時からあるサブウェポン、スペシャルウェポンを絞り込める機能です。</h4>
+    <h4>歴代のどのシリーズで登場したかを絞り込める機能です。</h4>
     ※スプラトゥーン1からスプラトゥーン2にかけてスペシャルウェポンは一新された為、<br>
-    スプラトゥーン1のスペシャルウェポンが元となった新しいスペシャルウェポンを検索している。（例：バリア→グレートバリア）<br><br>
+    スプラトゥーン3の一部スペシャルは、スプラトゥーン1で初登場したことにしている。（例：バリア→グレートバリア）<br><br>
   
   <form action="/benri">
     <input type="checkbox" name="splatoon1sub" id="splatoon1sub">スプラトゥーン1のサブウェポン&emsp;
@@ -86,6 +88,25 @@
           <td><%= row.Point %>P</td>
         </tr>
       <% } %>
-  </table>
+      </table><br><br><br>
+
+
+        
+  <h3>削除欄</h3>
+  <form action="/deletemain">
+    削除したい武器の『ID』を入力してください。<br>
+    <input type="number" name="mainid" id="mainid"><br>
+    <input type="submit" value="削除" id="Button2" disabled>
+  </form>
+
+  <script>
+    const text = document.getElementById('mainid');
+    const text2 = document.getElementById('Button2');
+    text.addEventListener('keyup', (e) => {
+      if (1 <= e.target.value.length) {
+        text2.disabled = false;
+      }
+    })
+  </script>
 </body>
 </html>

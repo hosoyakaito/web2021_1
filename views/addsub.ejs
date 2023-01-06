@@ -5,14 +5,38 @@
   <title>サブ武器追加ページ</title>
 </head>
 <body>
+  <h2>追加欄</h2>
   <form action="/addsub">
-    サブウェポンの名前を入力してください。<br>
+    追加したいサブウェポンの『名前』を入力してください。<br>
     <input type="text" name="subname" id="subname"><br>
     インク消費量を入力してください。<br>
     <input type="number" name="inkConsumption" id="inkConsumption">%<br>
-    
     <input type="submit" value="登録"><br>
   </form><br><br>
+
+
+
+  
+
+  <h3>削除欄</h3>
+  <form action="/deletesub">
+    削除したいサブウェポンの『ID』を入力してください。<br>
+    <input type="number" name="subid" id="subid"><br>
+    <input type="submit" value="削除" id="Button2" disabled><br>
+  </form><br><br>
+
+
+  <script>
+    const text = document.getElementById('subid');
+    const text2 = document.getElementById('Button2');
+    text.addEventListener('keyup', (e) => {
+      if (1 <= e.target.value.length) {
+        text2.disabled = false;
+      }
+    })
+  </script>
+
+  
   サブウェポン表<br>
   表示順：「ID」「名前」「インク消費量」<br><br>
   
