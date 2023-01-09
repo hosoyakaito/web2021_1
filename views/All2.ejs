@@ -1,0 +1,55 @@
+<!Doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>武器情報</title>
+</head>
+<body>
+  <h1>武器情報</h1>
+
+   <h2>武器情報一覧</h2>
+  表示順<br>
+          「ID」「メイン」　　　　「サブ」　　　「インク消費量」「スペシャル」「必要ポイント」<br><br>
+  <table>
+      <% for( let row of data) { %>
+        <tr>
+          <td>&emsp;<%= row.id %>&emsp;</td>
+          <td><%= row.MainWeaponName %>&emsp;</td>
+          <td><%= row.SubWeaponName %>&emsp;&emsp;&emsp;&nbsp;</td>
+          <td><%= row.inkConsumption %>％&emsp;&emsp;&emsp;&ensp;</td>
+          <td><%= row.SpecialWeaponName %>&emsp;&emsp;&emsp;&ensp;</td>
+          <td><%= row.Point %>P</td>
+        </tr>
+      <% } %>
+      </table><br><br><br>
+
+
+        
+  <h3>削除欄</h3>
+  <form action="/deletemain">
+    削除したい武器の『ID』を入力してください。<br>
+    <input type="number" name="mainid" id="mainid" required><br>
+    <input type="submit" value="削除" id="Button2">
+  </form>
+  <br><br>
+
+  
+  <br><form action="/all">
+    <input type="submit" value="検索ページへ　-->"> 
+  </form>
+
+  <br><form action="/main">
+    <input type="submit" value="メイン武器追加ページへ　-->"> 
+  </form>
+
+  <br><form action="/sub">
+    <input type="submit" value="サブ武器追加ページへ　-->"> 
+  </form>
+
+  <br><form action="/special">
+    <input type="submit" value="スペシャル武器追加ページへ　-->"> 
+  </form>
+
+  <br><br><a href="/public/input01.html"><--　トップページに戻る</a>
+</body>
+</html>

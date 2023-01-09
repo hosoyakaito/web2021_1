@@ -2,12 +2,10 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>スプラトゥーン武器一覧</title>
+  <title>スプラトゥーン武器検索</title>
 </head>
 <body>
-  <h1>武器情報</h1>
-  <h4>※一番下に武器情報の表があります</h4><br>
-  <h2>絞り込み検索</h2>
+  <h1>絞り込み検索</h1>
   <h4>※and検索ではなく、or検索です</h4>
   <form action="/kensaku">
     メインウェポンの名前を入力してください。<br>
@@ -59,17 +57,17 @@
   </form>
 
     <h2>便利検索機能</h2>
-    <h4>歴代のどのシリーズで登場したかを絞り込める機能です。</h4>
+    <h4>歴代のシリーズで登場したサブ、スペシャルで武器を絞り込める機能です。</h4>
     ※スプラトゥーン1からスプラトゥーン2にかけてスペシャルウェポンは一新された為、<br>
-    スプラトゥーン3の一部スペシャルは、スプラトゥーン1で初登場したことにしている。（例：バリア→グレートバリア）<br><br>
+    スプラトゥーン1のスペシャルウェポンはありません。<br>
+  また、絞り込んでも出てこないサブ、スペシャルはスプラトゥーン3から登場したこととなります。<br><br>
   
   <form action="/benri">
-    <input type="checkbox" name="splatoon1sub" id="splatoon1sub">スプラトゥーン1のサブウェポン&emsp;
-    <input type="checkbox" name="splatoon2sub" id="splatoon2sub">スプラトゥーン2のサブウェポン&emsp;
-    <input type="checkbox" name="splatoon3sub" id="splatoon3sub">スプラトゥーン3のサブウェポン<br>
-    <input type="checkbox" name="splatoon1special" id="splatoon1special">スプラトゥーン1のスペシャルウェポン&emsp;
-    <input type="checkbox" name="splatoon2special" id="splatoon2special">スプラトゥーン2のスペシャルウェポン&emsp;
-    <input type="checkbox" name="splatoon3special" id="splatoon3special">スプラトゥーン3のスペシャルウェポン
+    <input type="checkbox" name="splatoon1sub" id="splatoon1sub">スプラトゥーン1からのサブウェポン&emsp;
+    <input type="checkbox" name="splatoon2sub" id="splatoon2sub">スプラトゥーン2からのサブウェポン&emsp;
+    <input type="checkbox" name="splatoon3sub" id="splatoon3sub">スプラトゥーン3からのサブウェポン<br>
+    <input type="checkbox" name="splatoon2special" id="splatoon2special">スプラトゥーン2からのスペシャルウェポン&emsp;
+    <input type="checkbox" name="splatoon3special" id="splatoon3special">スプラトゥーン3からのスペシャルウェポン
     <br><br><br><input type="submit" value="検索する"><br>
   </form>
     
@@ -83,30 +81,29 @@
           <td>&emsp;<%= row.id %>&emsp;</td>
           <td><%= row.MainWeaponName %>&emsp;</td>
           <td><%= row.SubWeaponName %>&emsp;&emsp;&emsp;&nbsp;</td>
-          <td><%= row.inkConsumption %>％&emsp;&emsp;&emsp;&ensp;</td>
-          <td><%= row.SpecialWeaponName %>&emsp;&emsp;&emsp;&ensp;</td>
+          <td><%= row.inkConsumption %>％&emsp;&emsp;&emsp;&ensp;&emsp;&emsp;</td>
+          <td><%= row.SpecialWeaponName %>&emsp;&ensp;</td>
           <td><%= row.Point %>P</td>
         </tr>
       <% } %>
-      </table><br><br><br>
+      </table><br><br>
 
-
-        
-  <h3>削除欄</h3>
-  <form action="/deletemain">
-    削除したい武器の『ID』を入力してください。<br>
-    <input type="number" name="mainid" id="mainid"><br>
-    <input type="submit" value="削除" id="Button2" disabled>
+  <br><form action="/all2">
+    <input type="submit" value="武器情報ページへ　-->"> 
   </form>
 
-  <script>
-    const text = document.getElementById('mainid');
-    const text2 = document.getElementById('Button2');
-    text.addEventListener('keyup', (e) => {
-      if (1 <= e.target.value.length) {
-        text2.disabled = false;
-      }
-    })
-  </script>
+  <br><form action="/main">
+    <input type="submit" value="メイン武器追加ページへ　-->"> 
+  </form>
+
+  <br><form action="/sub">
+    <input type="submit" value="サブ武器追加ページへ　-->"> 
+  </form>
+
+  <br><form action="/special">
+    <input type="submit" value="スペシャル武器追加ページへ　-->"> 
+  </form>
+
+  <br><br><a href="/public/input01.html"><--　トップページに戻る</a>
 </body>
 </html>

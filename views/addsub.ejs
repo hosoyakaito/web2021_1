@@ -8,9 +8,9 @@
   <h2>追加欄</h2>
   <form action="/addsub">
     追加したいサブウェポンの『名前』を入力してください。<br>
-    <input type="text" name="subname" id="subname"><br>
+    <input type="text" name="subname" id="subname" required><br>
     インク消費量を入力してください。<br>
-    <input type="number" name="inkConsumption" id="inkConsumption">%<br>
+    <input type="number" name="inkConsumption" id="inkConsumption" required>%<br>
     <input type="submit" value="登録"><br>
   </form><br><br>
 
@@ -21,20 +21,9 @@
   <h3>削除欄</h3>
   <form action="/deletesub">
     削除したいサブウェポンの『ID』を入力してください。<br>
-    <input type="number" name="subid" id="subid"><br>
-    <input type="submit" value="削除" id="Button2" disabled><br>
+    <input type="number" name="subid" id="subid" required><br>
+    <input type="submit" value="削除" id="Button2"><br>
   </form><br><br>
-
-
-  <script>
-    const text = document.getElementById('subid');
-    const text2 = document.getElementById('Button2');
-    text.addEventListener('keyup', (e) => {
-      if (1 <= e.target.value.length) {
-        text2.disabled = false;
-      }
-    })
-  </script>
 
   
   サブウェポン表<br>
@@ -49,5 +38,25 @@
         </tr>
       <% } %>
   </table>
+
+
+
+  <br><form action="/all2">
+    <input type="submit" value="武器情報ページへ　-->"> 
+  </form>
+
+  <br><form action="/all">
+    <input type="submit" value="検索ページへ　-->"> 
+  </form>
+
+  <br><form action="/main">
+    <input type="submit" value="メイン武器追加ページへ　-->"> 
+  </form>
+
+  <br><form action="/special">
+    <input type="submit" value="スペシャル武器追加ページへ　-->"> 
+  </form>
+
+  <br><br><a href="/public/input01.html"><--　トップページに戻る</a>
 </body>
 </html>

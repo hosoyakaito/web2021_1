@@ -5,18 +5,19 @@
   <title>メイン武器追加ページ</title>
 </head>
 <body>
+  <h2>追加欄</h2>
   <form action="/addmain">
     追加したいメインウェポンの名前を入力してください。<br>
-    <input type="text" name="bukiname" id="bukiname"><br>
+    <input type="text" name="bukiname" id="bukiname" required><br>
     
     サブウェポンのIDを入力してください。<br>
-    <input type="number" name="subID" id="subID"><br>
+    <input type="number" name="subID" id="subID" required><br>
     
     スペシャルウェポンのIDを入力してください。<br>
-    <input type="number" name="specialID" id="specialID"><br>
+    <input type="number" name="specialID" id="specialID" required><br>
     
     必要ポイントを入力してください。<br>
-    <input type="number" name="point" id="point">P<br>
+    <input type="number" name="point" id="point" required>P<br>
     <input type="submit" id="aaa" value="登録"><br>
     
   </form><br><br>
@@ -37,5 +38,24 @@
       <% } %>
   </table>
 
+
+  <br><form action="/all2">
+    <input type="submit" value="武器情報ページへ　-->"> 
+  </form>
+
+  <br><form action="/all">
+    <input type="submit" value="検索ページへ　-->"> 
+  </form>
+
+  <br><form action="/sub">
+    <input type="submit" value="サブ武器追加ページへ　-->"> 
+  </form>
+
+  <br><form action="/special">
+    <input type="submit" value="スペシャル武器追加ページへ　-->"> 
+  </form>
+
+
+  <br><br><a href="/public/input01.html"><--　トップページに戻る</a>
 </body>
 </html>

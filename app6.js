@@ -17,82 +17,24 @@ app.get("/", (req, res) => {
 
 app.get("/all", (req, res) => {
     let sql = "select id, MainWeaponName, Sub.SubWeaponName, sub.inkConsumption, Special.SpecialWeaponName,Point from Main INNER join Sub on Main.sub_id = Sub.sub_id INNER join Special on Main.special_id = Special.special_id;";
-    //console.log(sql);    // ②
     db.serialize( () => {
         db.all(sql, (error, data) => {
             if( error ) {
                 res.render('show', {mes:"エラーです"});
             }
-            //console.log(data);    // ③
             res.render('All', {data:data});
         })
     })
 })
 
-app.get("/sub2", (req, res) => {
-    let sql = "select * from Sub;";
-    //console.log(sql);    // ②
+app.get("/all2", (req, res) => {
+    let sql = "select id, MainWeaponName, Sub.SubWeaponName, sub.inkConsumption, Special.SpecialWeaponName,Point from Main INNER join Sub on Main.sub_id = Sub.sub_id INNER join Special on Main.special_id = Special.special_id;";
     db.serialize( () => {
         db.all(sql, (error, data) => {
             if( error ) {
                 res.render('show', {mes:"エラーです"});
             }
-            //console.log(data);    // ③
-            res.render('addsub', {data:data});
-        })
-    })
-})
-
-app.get("/special2", (req, res) => {
-    let sql = "select * from Special;";
-    //console.log(sql);    // ②
-    db.serialize( () => {
-        db.all(sql, (error, data) => {
-            if( error ) {
-                res.render('show', {mes:"エラーです"});
-            }
-            //console.log(data);    // ③
-            res.render('addspecial', {data:data});
-        })
-    })
-})
-
-app.get("/addmain", (req, res) => {
-
-  let sql ='insert into Main ("MainWeaponName","sub_id","special_id","point") values ("'+req.query.bukiname+'","'+req.query.subID+'","'+req.query.specialID+'","'+req.query.point+'");';
-  console.log(sql);
-   db.serialize( () => {
-        db.run(sql, (error, data) => {
-            if( error ) {
-                res.render('show', {mes:"エラーです"});
-            }
-            res.redirect('/all');
-        })
-    })
-})
-
-app.get("/addsub", (req, res) => {
-  let sql ='insert into Sub ("SubWeaponName","inkConsumption") values ("'+req.query.subname+'","'+req.query.inkConsumption+'");';
-  console.log(sql);
-   db.serialize( () => {
-        db.run(sql, (error, data) => {
-            if( error ) {
-                res.render('show', {mes:"エラーです"});
-            }
-            res.redirect('/sub2');
-        })
-    })
-})
-
-app.get("/addspecial", (req, res) => {
-  let sql ='insert into Special ("SpecialWeaponName") values ("'+req.query.specialname+'");';
-  console.log(sql);
-   db.serialize( () => {
-        db.run(sql, (error, data) => {
-            if( error ) {
-                res.render('show', {mes:"エラーです"});
-            }
-            res.redirect('/special2');
+            res.render('All2', {data:data});
         })
     })
 })
@@ -130,6 +72,46 @@ app.get("/special", (req, res) => {
     })
 })
 
+
+app.get("/addmain", (req, res) => {
+
+  let sql ='insert into Main ("MainWeaponName","sub_id","special_id","point") values ("'+req.query.bukiname+'","'+req.query.subID+'","'+req.query.specialID+'","'+req.query.point+'");';
+  console.log(sql);
+   db.serialize( () => {
+        db.run(sql, (error, data) => {
+            if( error ) {
+                res.render('show', {mes:"エラーです"});
+            }
+            res.redirect('/all2');
+        })
+    })
+})
+
+app.get("/addsub", (req, res) => {
+  let sql ='insert into Sub ("SubWeaponName","inkConsumption") values ("'+req.query.subname+'","'+req.query.inkConsumption+'");';
+  console.log(sql);
+   db.serialize( () => {
+        db.run(sql, (error, data) => {
+            if( error ) {
+                res.render('show', {mes:"エラーです"});
+            }
+            res.redirect('/sub');
+        })
+    })
+})
+
+app.get("/addspecial", (req, res) => {
+  let sql ='insert into Special ("SpecialWeaponName") values ("'+req.query.specialname+'");';
+  console.log(sql);
+   db.serialize( () => {
+        db.run(sql, (error, data) => {
+            if( error ) {
+                res.render('show', {mes:"エラーです"});
+            }
+            res.redirect('/special');
+        })
+    })
+})
 
 
 app.get("/kensaku", (req, res) => {
@@ -197,20 +179,18 @@ app.get("/benri", (req, res) => {
   let splatoon1sub = "";
   let splatoon2sub = "";
   let splatoon3sub = "";
-  let splatoon1special = "";
   let splatoon2special = "";
   let splatoon3special = "";
 
-  if(req.query.splatoon1sub)splatoon1sub = ",'カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク'";
-  if(req.query.splatoon2sub)splatoon2sub = ",'カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク'";
+  if(req.query.splatoon1sub)splatoon1sub = ",'クイックボム','スプラッシュボム','キューバンボム','トラップ','スプラッシュシールド','スプリンクラー','ジャンプビーコン','ポイントセンサー'";
+  if(req.query.splatoon2sub)splatoon2sub = ",'カーリングボム','ロボットボム','ポイズンミスト','タンサンボム','トーピード'";
   if(req.query.splatoon3sub)splatoon3sub = ",'ラインマーカー'";
-  if(req.query.splatoon1special)splatoon1special = ",'カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク'";
-  if(req.query.splatoon2special)splatoon2special = ",'カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク'";
-  if(req.query.splatoon3special)splatoon3special = ",'カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク','カニタンク'";
+  if(req.query.splatoon2special)splatoon2special = ",'ジェットパック','','マルチミサイル','アメフラシ','ナイスダマ','ウルトラハンコ'";
+  if(req.query.splatoon3special)splatoon3special =",'ウルトラショット','エナジースタンド','カニタンク','キューインキ','グレートバリア','サメライド','ショクワンダー','トリプルトルネード','ポップソナー','メガホンレーザー'";
 
 
   
-  let sql ="select id, MainWeaponName, Sub.SubWeaponName, sub.inkConsumption, Special.SpecialWeaponName,Point from Main INNER join Sub on Main.sub_id = Sub.sub_id INNER join Special on Main.special_id = Special.special_id WHERE sub.SubWeaponName in (''"+splatoon1sub+""+splatoon2sub+""+splatoon3sub+") or Special.SpecialWeaponName in (''"+splatoon1special+""+splatoon2special+""+splatoon3special+");";
+  let sql ="select id, MainWeaponName, Sub.SubWeaponName, sub.inkConsumption, Special.SpecialWeaponName,Point from Main INNER join Sub on Main.sub_id = Sub.sub_id INNER join Special on Main.special_id = Special.special_id WHERE sub.SubWeaponName in (''"+splatoon1sub+""+splatoon2sub+""+splatoon3sub+") or Special.SpecialWeaponName in (''"+splatoon2special+""+splatoon3special+");";
   console.log(sql);
    db.serialize( () => {
         db.all(sql, (error, data) => {
@@ -234,7 +214,7 @@ app.get("/deletespecial", (req, res) => {
             console.log('Error: ', error );
             return;
           }
-          res.redirect('/special2');
+          res.redirect('/special');
         })
     })
 })
@@ -250,7 +230,7 @@ app.get("/deletesub", (req, res) => {
             console.log('Error: ', error );
             return;
           }
-          res.redirect('/sub2');
+          res.redirect('/sub');
         })
     })
 })
@@ -266,7 +246,7 @@ app.get("/deletemain", (req, res) => {
             console.log('Error: ', error );
             return;
           }
-          res.redirect('/all');
+          res.redirect('/all2');
         })
     })
 })
