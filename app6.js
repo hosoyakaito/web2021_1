@@ -41,7 +41,7 @@ app.get("/all2", (req, res) => {
 
 app.get("/main", (req, res) => {
     db.serialize( () => {
-        db.all("select * from Sub left outer join special on Sub.sub_id = special.special_id;", (error, data) => {
+        db.all("select * from Sub right outer join special on Sub.sub_id = special.special_id;", (error, data) => {
             if( error ) {
                 res.render('show', {mes:"エラーです"});
             }
